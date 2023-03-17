@@ -12,7 +12,8 @@ dir = ""
 
 show, configSource, style = input("Show Name:").lower().replace(' ','-'), input("Config Source [Default: configs.json]:"), input("Style [Default: 1]:")
 
-if configSource == "": configSource = "configs.json"
+if configSource == "": configSource = "./Configs/configs.json"
+else: configSource = "./Configs/" + configSource
 if style == "": style = "1"
 if show == "":
     print("No show name entered. Exiting...")
