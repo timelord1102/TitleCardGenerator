@@ -1,0 +1,41 @@
+{    
+    "1":{
+        "name":"Config 1",
+        "config":{
+            "title":{
+                "pos":"960, 540",
+                "font":"Digit-V4Wl.ttf",
+                "color":"#FFFFFF",
+                "size":70,
+                "params":{
+                    "upper":true,
+                    "bold":2,
+                    "boldColor":"#000000"
+                }
+            },
+            "season":{
+                "pos":"960, 466",
+                "font":"1.ttf",
+                "color":"#FFFFFF",
+                "size":45,
+                "params":{
+                    "bold":2,
+                    "boldColor":"#000000",
+                    "decimals":2,
+                    "useSeasonName":true
+                }
+            },
+            "episode":{
+                "pos":"960, 614",
+                "font":"1.ttf",
+                "color":"#FFFFFF",
+                "size":45,
+                "params":{
+                    "bold":2,
+                    "boldColor":"#000000",
+                    "useRoman":true
+                }
+            }
+        }
+    }
+}
