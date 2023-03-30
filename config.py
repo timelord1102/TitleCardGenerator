@@ -1,6 +1,7 @@
 import json
 import num2words as n2w
 
+# reads parameters from config file for the show title
 def setupTitleParams(title, style, config):
     if "title" in config[style]["config"] and "params" in config[style]["config"]["title"]:
         if "upper" in config[style]["config"]["title"]["params"] and config[style]["config"]["title"]["params"]["upper"] == True:
@@ -15,6 +16,7 @@ def setupTitleParams(title, style, config):
         print('\033[93m' + "No title config found, using default")
     return title
 
+# reads parameters from config file for the season
 def setupSeasonParams(seasonNum, style, seasonName, config):
     season = "Season"
     
@@ -53,6 +55,8 @@ def setupSeasonParams(seasonNum, style, seasonName, config):
     
     return season
 
+
+# reads parameters from config file for the episode
 def setupEpisodeParams(episodeNum, style, config):
     episode = "Episode"
     if("episode" in config[style]["config"] and "params" in config[style]["config"]["episode"]):
@@ -80,6 +84,7 @@ def setupEpisodeParams(episodeNum, style, config):
                     episode += sym[i]
                     div -= 1
                 i -= 1
+        else: episode = episode + " " + str(episodeNum)
     if "episode" in config[style]["config"] and "params" not in config[style]["config"]["episode"] or config[style]["config"]["episode"]["params"] == {}:
         print("\033[93mNo params speified for episode, using default")
         episode = " " + str(episodeNum)
@@ -88,6 +93,7 @@ def setupEpisodeParams(episodeNum, style, config):
 
     return episode
 
+# helper functions for bold and color
 def titleIsBold(style, config):
     if "title" in config[style]["config"] and "params" in config[style]["config"]["title"]:
         if "bold" in config[style]["config"]["title"]["params"]:

@@ -2,6 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 import json
 import config as cnf
 
+# Helper function to help standardize font sizes using arial as the base font
 def getDiff(type, style, config):
     #get font size for title for both base and chosen font
     baseFont = ImageFont.truetype('./Fonts/arial.ttf', config[style]["config"][type]["size"])
@@ -46,7 +47,16 @@ def makeTitleCard(img, title, season, episode, style, config):
         _, _, _, h = draw.textbbox((0, 0), title + 'g', font=font1)   
         
         bold = cnf.titleIsBold(style, config) 
-            
+        if "wrap" in config[style]["config"]["title"]["params"]:
+            wrapNum = config[style]["config"]["title"]["params"]["wrap"]
+            titleSplit = title.split(" ")
+            for i in range(0, len(titleSplit)):
+                if i % wrapNum == 0 and i != 0:
+                    titleSplit[i] = "\n" + titleSplit[i]
+            title = " ".join(titleSplit)
+            _, _, w, _ = draw.textbbox((0, 0), title, font=font1)
+            _, _, _, h = draw.textbbox((0, 0), title + 'g', font=font1)   
+                
         draw.text((int(titlePos[0]) - w/2, int(titlePos[1]) - h/2), title, font=font1, fill=config[style]["config"]["title"]["color"], 
                   stroke_width=bold[0], stroke_fill=bold[1])
         
